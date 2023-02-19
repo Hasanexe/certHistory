@@ -3,12 +3,14 @@ import sys, requests, re
 class crt: #Class to store Cert details and initialize all with empty string
     cid,Logged_At,Not_Before,Not_After,Common_Name,Matching_Identities = ("",)*6
     Cert_Common_Name,Cert_organizationalUnitName,Cert_organizationName,Cert_countryName = ("",)*4
-    
+
+certCount = 5
 if len(sys.argv) == 1: #If no argument given output usage
-    print("usage: certHistory [Domain]")
+    print("usage: certHistory [Domain] [Count]")
     exit()
 else:
     website = sys.argv[1]
+    certCount = sys.argv[2]
 
 results = []
 
@@ -43,6 +45,9 @@ for line in response.text.splitlines():         #Loop line by line in html body
                 if count == 1:                  #First time get cid
                     info.cid = c
                     count = 2
+                    certCount -= 1
+                    if certCount == 0:          #After specified amount it will exit
+                        sys.exit()
                 elif count == 2:                #second time get Logget at and so on
                     info.Logged_At = c
                     count = 3
