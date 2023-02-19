@@ -4,7 +4,7 @@ class crt: #Class to store Cert details and initialize all with empty string
     cid,Logged_At,Not_Before,Not_After,Common_Name,Matching_Identities = ("",)*6
     Cert_Common_Name,Cert_organizationalUnitName,Cert_organizationName,Cert_countryName = ("",)*4
     
-if len(sys.argv) == 1: #If no argument given use default domain else use argument as domain
+if len(sys.argv) == 1: #If no argument given output usage
     print("usage: certHistory [Domain]")
 	exit()
 else:
