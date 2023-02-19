@@ -6,7 +6,7 @@ class crt: #Class to store Cert details and initialize all with empty string
     
 if len(sys.argv) == 1: #If no argument given output usage
     print("usage: certHistory [Domain]")
-	exit()
+    exit()
 else:
     website = sys.argv[1]
 
