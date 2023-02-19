@@ -8,9 +8,12 @@ certCount = 5
 if len(sys.argv) == 1: #If no argument given output usage
     print("usage: certHistory [Domain] [Count]")
     exit()
+elif len(sys.argv) == 2:
+    website = sys.argv[1]
+    certCount = 5
 else:
     website = sys.argv[1]
-    certCount = sys.argv[2]
+    certCount = int(sys.argv[2])
 
 results = []
 
@@ -36,6 +39,8 @@ start = 0
 count = 1
 info = crt()
 for line in response.text.splitlines():         #Loop line by line in html body
+    if certCount == 0:          #After specified amount it will exit
+        break
     if "Issuer Name" in line:                   #Focus after "Issuer Name" found
         start = 1                               #Enable flag to focus
     if start == 1 and "TD" in line:             #Focus only on lines has TD
@@ -45,9 +50,6 @@ for line in response.text.splitlines():         #Loop line by line in html body
                 if count == 1:                  #First time get cid
                     info.cid = c
                     count = 2
-                    certCount -= 1
-                    if certCount == 0:          #After specified amount it will exit
-                        sys.exit()
                 elif count == 2:                #second time get Logget at and so on
                     info.Logged_At = c
                     count = 3
@@ -78,6 +80,7 @@ for line in response.text.splitlines():         #Loop line by line in html body
                             elif key=="countryName":
                                 info.Cert_countryName = value
                         results.append(info)
+                        certCount -= 1
                         info = crt()
                     else:                   #Matching identities has more than 1 value and its last
                         info.Matching_Identities += " "+c
