@@ -20,15 +20,8 @@ To use certHistory, follow these steps:
     
 4. Wait for the tool to complete. The tool will retrieve the certificate history for the specified domain name by querying the crt.sh website and display the results.
 
-Tested on Linux
-
-![Alt text](Screenshot.jpeg?raw=true "Screenshot")
 
 
-
-
-
-<!-- Requirements -->
 ## Requirements
 
 certHistory requires Python 3 and the following packages:
@@ -40,6 +33,14 @@ To install the required packages, run the following command:
 ```bash
 pip install requests
 ```
+Tested on Linux
 
+![Alt text](Screenshot.jpeg?raw=true "Screenshot")
 
+## Contributing
+
+If you find any issues with the `certHistory` or would like to contribute to the project, please feel free to submit a pull request or open an issue on the Github repository.
+
+## License
+`certHistory` is licensed under the [Creative Commons Attribution-NonCommercial (CC BY-NC) license](https://creativecommons.org/licenses/by-nc/4.0/).
 
