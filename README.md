@@ -1,5 +1,5 @@
 # certHistory
-certHistory is a command-line tool that retrieves certificate history for a given domain name by querying the crt.sh website. 
+`certHistory` is a command-line tool that retrieves certificate history for a given domain name by querying the crt.sh website. 
 
 ## Usage
 
